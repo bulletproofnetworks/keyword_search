@@ -19,7 +19,7 @@ module KeywordSearch
       results.each do |key, terms|
         definition.handle(key, terms)
       end
-      Result.new(defintion.results, results)
+      Result.new(definition.results, results)
     end
     
     #######
