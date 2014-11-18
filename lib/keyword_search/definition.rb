@@ -1,6 +1,7 @@
 module KeywordSearch
 
   class Definition
+    attr_reader :results
 
     class Keyword
 
@@ -24,7 +25,8 @@ module KeywordSearch
 
     def initialize
       @default_keyword = nil
-      yield self if block_given?
+      @results = {}
+      yield self, @results if block_given?
     end
 
     def keywords

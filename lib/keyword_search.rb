@@ -4,8 +4,9 @@ require File.dirname(__FILE__) << '/keyword_search/definition.rb'
 
 module KeywordSearch
 
-  class ParseError < ::SyntaxError; end  
-      
+  class ParseError < ::SyntaxError; end
+  class Result < Struct.new(:parsed, :raw) ; end
+
   class << self
   
     
@@ -18,7 +19,7 @@ module KeywordSearch
       results.each do |key, terms|
         definition.handle(key, terms)
       end
-      results
+      Result.new(defintion.results, results)
     end
     
     #######
